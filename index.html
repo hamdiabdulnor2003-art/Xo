@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>اتحاد طلبة كلية الهندسة – جامعة بنغازي</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --white: #ffffff;
+    --orange: #F97316;
+    --orange-light: #FB923C;
+    --orange-dark: #EA580C;
+    --blue: #1D4ED8;
+    --blue-light: #3B82F6;
+    --blue-dark: #1E3A8A;
+    --gray-100: #F1F5F9;
+    --gray-200: #E2E8F0;
+    --gray-400: #94A3B8;
+    --gray-600: #475569;
+    --gray-800: #1E293B;
+    --gray-900: #0F172A;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+    --shadow-lg: 0 20px 60px rgba(0,0,0,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--white);
+    color: var(--gray-900);
+    overflow-x: hidden;
+  }
+
+  /* ======= NAVBAR ======= */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid var(--orange);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled {
+    height: 60px;
+    background: rgba(255,255,255,0.98);
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .nav-logo-icon {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--blue), var(--orange));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 12px rgba(29,78,216,0.3);
+  }
+
+  .nav-logo-text {
+    display: flex; flex-direction: column; line-height: 1.2;
+  }
+
+  .nav-logo-text span:first-child {
+    font-size: 15px; font-weight: 800; color: var(--blue-dark);
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .nav-logo-text span:last-child {
+    font-size: 11px; font-weight: 500; color: var(--orange);
+  }
+
+  .nav-links {
+    display: flex; gap: 4px; list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px; font-weight: 600;
+    color: var(--gray-600);
+    transition: all 0.25s ease;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute; bottom: 4px; left: 50%; right: 50%;
+    height: 2px; background: var(--orange);
+    transition: all 0.25s ease;
+    border-radius: 2px;
+  }
+
+  .nav-links a:hover { color: var(--orange); }
+  .nav-links a:hover::after { left: 16px; right: 16px; }
+  .nav-links a.active { color: var(--orange); }
+  .nav-links a.active::after { left: 16px; right: 16px; }
+
+  .nav-contact-btn {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 14px rgba(249,115,22,0.4);
+    transition: transform 0.2s, box-shadow 0.2s !important;
+  }
+
+  .nav-contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(249,115,22,0.5) !important;
+  }
+
+  .nav-contact-btn::after { display: none !important; }
+
+  /* ======= PAGES SYSTEM ======= */
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding-top: 72px;
+    animation: fadeInPage 0.5s ease;
+  }
+
+  .page.active { display: block; }
+
+  @keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ======= HERO SECTION ======= */
+  .hero {
+    min-height: calc(100vh - 72px);
+    background: linear-gradient(160deg, #0F172A 0%, #1E3A8A 45%, #1D4ED8 75%, #F97316 100%);
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 5%;
+  }
+
+  /* Animated background shapes */
+  .hero-bg-shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.3;
+    animation: floatShape 8s infinite ease-in-out;
+  }
+
+  .hero-bg-shape:nth-child(1) {
+    width: 600px; height: 600px;
+    background: var(--orange);
+    top: -200px; right: -200px;
+    animation-delay: 0s;
+  }
+
+  .hero-bg-shape:nth-child(2) {
+    width: 400px; height: 400px;
+    background: var(--blue-light);
+    bottom: -100px; left: -100px;
+    animation-delay: 3s;
+  }
+
+  .hero-bg-shape:nth-child(3) {
+    width: 300px; height: 300px;
+    background: white;
+    top: 50%; left: 40%;
+    transform: translate(-50%, -50%);
+    animation-delay: 5s;
+    opacity: 0.05;
+  }
+
+  /* Grid overlay */
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.6);
+    animation: floatParticle linear infinite;
+  }
+
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100px) translateX(40px) scale(1); opacity: 0; }
+  }
+
+  @keyframes floatShape {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 30px) scale(0.95); }
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; color: white;
+    max-width: 900px;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px; font-weight: 600;
+    margin-bottom: 32px;
+    animation: slideDown 0.8s ease 0.2s both;
+  }
+
+  .hero-badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--orange-light);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.7; }
+  }
+
+  .hero-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    animation: slideUp 0.8s ease 0.4s both;
+  }
+
+  .hero-title span { color: var(--orange-light); }
+
+  .hero-subtitle {
+    font-size: clamp(18px, 2.5vw, 26px);
+    font-weight: 500;
+    opacity: 0.85;
+    margin-bottom: 24px;
+    animation: slideUp 0.8s ease 0.5s both;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    opacity: 0.7;
+    max-width: 620px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+    animation: slideUp 0.8s ease 0.6s both;
+  }
+
+  .hero-stats {
+    display: flex; justify-content: center; gap: 40px;
+    margin-bottom: 48px;
+    animation: slideUp 0.8s ease 0.7s both;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    padding: 20px 28px;
+    border-radius: 16px;
+    min-width: 110px;
+    transition: transform 0.3s, background 0.3s;
+  }
+
+  .hero-stat:hover {
+    transform: translateY(-6px);
+    background: rgba(255,255,255,0.15);
+  }
+
+  .hero-stat-number {
+    font-size: 32px; font-weight: 900;
+    color: var(--orange-light);
+    font-family: 'Cairo', sans-serif;
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 12px; opacity: 0.75; margin-top: 4px;
+  }
+
+  .hero-buttons {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: slideUp 0.8s ease 0.8s both;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white;
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-weight: 700; font-size: 16px;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    box-shadow: 0 8px 24px rgba(249,115,22,0.5);
+    transition: all 0.3s;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(249,115,22,0.6);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.1);
+    color: white;
+    padding: 16px 36px;
+    border-radius: 12px;
+    font-weight: 700; font-size: 16px;
+    border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-3px);
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.5); font-size: 12px; z-index: 2;
+    animation: fadeInOut 2.5s ease infinite;
+  }
+
+  .scroll-indicator-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+    animation: scrollLine 2.5s ease infinite;
+  }
+
+  @keyframes scrollLine {
+    0% { transform: scaleY(0) translateY(-20px); opacity: 0; }
+    50% { transform: scaleY(1) translateY(0); opacity: 1; }
+    100% { transform: scaleY(0) translateY(20px); opacity: 0; }
+  }
+
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ======= SECTION STYLES ======= */
+  .section {
+    padding: 100px 5%;
+  }
+
+  .section-alt {
+    background: var(--gray-100);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(29,78,216,0.12));
+    color: var(--orange-dark);
+    border: 1px solid rgba(249,115,22,0.25);
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 13px; font-weight: 700;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  .section-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 900;
+    color: var(--gray-900);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-title span { color: var(--orange); }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--gray-600);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  /* ======= ABOUT PAGE CONTENT ======= */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-main-card {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    border-radius: 24px;
+    padding: 48px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .about-main-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(249,115,22,0.3);
+    border-radius: 50%;
+    filter: blur(40px);
+  }
+
+  .about-main-card::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    filter: blur(30px);
+  }
+
+  .about-card-icon {
+    font-size: 56px;
+    margin-bottom: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .about-card-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 28px; font-weight: 900;
+    margin-bottom: 12px;
+    position: relative; z-index: 1;
+  }
+
+  .about-card-text {
+    font-size: 15px; line-height: 1.8; opacity: 0.85;
+    position: relative; z-index: 1;
+  }
+
+  .about-mini-cards {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    margin-top: 16px;
+  }
+
+  .about-mini-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    border: 2px solid var(--gray-200);
+    transition: all 0.3s;
+    cursor: default;
+  }
+
+  .about-mini-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .about-mini-card-icon { font-size: 28px; margin-bottom: 8px; }
+  .about-mini-card-title {
+    font-weight: 700; font-size: 14px; color: var(--gray-800); margin-bottom: 4px;
+  }
+  .about-mini-card-text { font-size: 12px; color: var(--gray-400); }
+
+  .about-text h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 36px; font-weight: 900;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  .about-text h2 span { color: var(--orange); }
+
+  .about-text p {
+    font-size: 16px; line-height: 2; color: var(--gray-600);
+    margin-bottom: 24px;
+  }
+
+  .about-highlight {
+    background: linear-gradient(135deg, rgba(249,115,22,0.08), rgba(29,78,216,0.08));
+    border-right: 4px solid var(--orange);
+    padding: 20px 24px;
+    border-radius: 0 12px 12px 0;
+    margin-bottom: 24px;
+  }
+
+  .about-highlight p {
+    margin: 0;
+    font-style: italic;
+    color: var(--gray-700);
+    font-weight: 500;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+  }
+
+  .value-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    border: 2px solid var(--gray-200);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative; overflow: hidden;
+  }
+
+  .value-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    border-radius: 0 0 0 80px;
+    background: rgba(249,115,22,0.06);
+    transition: all 0.3s;
+  }
+
+  .value-card:hover {
+    border-color: var(--orange);
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(249,115,22,0.15);
+  }
+
+  .value-card:hover::before {
+    width: 120px; height: 120px;
+    background: rgba(249,115,22,0.1);
+  }
+
+  .value-icon {
+    font-size: 40px; margin-bottom: 16px;
+    display: block;
+  }
+
+  .value-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--gray-900); margin-bottom: 10px;
+  }
+
+  .value-text {
+    font-size: 14px; line-height: 1.8; color: var(--gray-600);
+  }
+
+  /* ======= CLUBS PAGE ======= */
+  .clubs-intro {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 50%, var(--orange-dark) 100%);
+    border-radius: 24px;
+    padding: 60px;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .clubs-intro::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 60%),
+                      radial-gradient(circle at 80% 50%, rgba(255,255,255,0.05) 0%, transparent 60%);
+  }
+
+  .clubs-intro h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 36px; font-weight: 900;
+    position: relative; z-index: 1;
+    margin-bottom: 16px;
+  }
+
+  .clubs-intro p {
+    font-size: 16px; opacity: 0.85; position: relative; z-index: 1;
+    max-width: 600px; margin: 0 auto; line-height: 1.8;
+  }
+
+  .clubs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+    margin-bottom: 60px;
+  }
+
+  .club-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--gray-200);
+    transition: all 0.35s ease;
+    cursor: pointer;
+  }
+
+  .club-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    border-color: var(--orange);
+  }
+
+  .club-card-header {
+    padding: 28px;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    color: white;
+    position: relative; overflow: hidden;
+  }
+
+  .club-card-header::after {
+    content: '';
+    position: absolute; top: -20px; left: -20px;
+    width: 100px; height: 100px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+
+  .club-card-icon { font-size: 36px; margin-bottom: 10px; position: relative; z-index: 1; }
+  .club-card-name {
+    font-family: 'Cairo', sans-serif;
+    font-size: 20px; font-weight: 800; position: relative; z-index: 1;
+  }
+
+  .club-card-body { padding: 24px; }
+
+  .club-card-desc {
+    font-size: 14px; color: var(--gray-600); line-height: 1.8; margin-bottom: 20px;
+  }
+
+  .club-card-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+
+  .club-tag {
+    background: rgba(249,115,22,0.08);
+    color: var(--orange-dark);
+    border: 1px solid rgba(249,115,22,0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+  }
+
+  /* ======= EVENTS PAGE ======= */
+  .events-filter {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-bottom: 40px; justify-content: center;
+  }
+
+  .filter-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid var(--gray-200);
+    background: white;
+    color: var(--gray-600);
+    font-weight: 600; font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Tajawal', sans-serif;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    border-color: var(--orange);
+    background: var(--orange);
+    color: white;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 28px;
+  }
+
+  .event-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 2px solid var(--gray-200);
+    transition: all 0.3s ease;
+  }
+
+  .event-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--blue-light);
+  }
+
+  .event-card-top {
+    height: 8px;
+  }
+
+  .event-card-top.orange { background: linear-gradient(90deg, var(--orange), var(--orange-light)); }
+  .event-card-top.blue { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+  .event-card-top.green { background: linear-gradient(90deg, #059669, #10B981); }
+  .event-card-top.purple { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+
+  .event-card-body { padding: 28px; }
+
+  .event-card-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .event-card-type {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  .event-card-type.orange { background: rgba(249,115,22,0.1); color: var(--orange-dark); }
+  .event-card-type.blue { background: rgba(29,78,216,0.1); color: var(--blue); }
+  .event-card-type.green { background: rgba(5,150,105,0.1); color: #059669; }
+  .event-card-type.purple { background: rgba(124,58,237,0.1); color: #7C3AED; }
+
+  .event-card-phase {
+    font-size: 11px; font-weight: 600; color: var(--gray-400);
+  }
+
+  .event-card-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 20px; font-weight: 800;
+    color: var(--gray-900); margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .event-card-desc {
+    font-size: 13px; line-height: 1.8; color: var(--gray-600);
+    margin-bottom: 20px;
+  }
+
+  .event-card-features {
+    list-style: none; margin-bottom: 20px;
+  }
+
+  .event-card-features li {
+    font-size: 13px; color: var(--gray-600);
+    padding: 4px 0;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+
+  .event-card-features li::before {
+    content: '✓';
+    color: var(--orange);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .event-card-footer {
+    padding: 16px 28px;
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 13px; color: var(--gray-600);
+  }
+
+  /* ======= PLAN PAGE ======= */
+  .phases-timeline {
+    position: relative;
+    padding-right: 40px;
+  }
+
+  .phases-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 19px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--orange), var(--blue), var(--orange));
+  }
+
+  .phase-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-right: 60px;
+    animation: none;
+  }
+
+  .phase-dot {
+    position: absolute;
+    right: 8px; top: 20px;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: white;
+    border: 3px solid var(--orange);
+    box-shadow: 0 0 0 4px rgba(249,115,22,0.15);
+    z-index: 1;
+  }
+
+  .phase-card {
+    background: white;
+    border-radius: 20px;
+    padding: 32px;
+    border: 2px solid var(--gray-200);
+    transition: all 0.3s;
+  }
+
+  .phase-card:hover {
+    border-color: var(--orange);
+    box-shadow: var(--shadow-md);
+    transform: translateX(-8px);
+  }
+
+  .phase-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; flex-wrap: gap;
+  }
+
+  .phase-number {
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white;
+    font-family: 'Cairo', sans-serif;
+    font-size: 14px; font-weight: 800;
+    padding: 6px 16px;
+    border-radius: 50px;
+  }
+
+  .phase-timeline-badge {
+    background: rgba(29,78,216,0.08);
+    color: var(--blue);
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 50px;
+    border: 1px solid rgba(29,78,216,0.2);
+  }
+
+  .phase-title {
+    font-family: 'Cairo', sans-serif;
+    font-size: 22px; font-weight: 800;
+    color: var(--gray-900); margin-bottom: 10px;
+  }
+
+  .phase-desc {
+    font-size: 14px; color: var(--gray-600); line-height: 1.8; margin-bottom: 16px;
+  }
+
+  .phase-items {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+
+  .phase-item-tag {
+    background: var(--gray-100);
+    color: var(--gray-700);
+    font-size: 12px; font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-200);
+    transition: all 0.2s;
+  }
+
+  .phase-item-tag:hover {
+    background: rgba(249,115,22,0.1);
+    color: var(--orange-dark);
+    border-color: rgba(249,115,22,0.3);
+  }
+
+  .budget-card {
+    background: linear-gradient(135deg, var(--gray-900), var(--blue-dark));
+    border-radius: 24px;
+    padding: 48px;
+    color: white;
+    margin-top: 60px;
+    position: relative; overflow: hidden;
+  }
+
+  .budget-card::before {
+    content: '';
+    position: absolute; top: -80px; left: -80px;
+    width: 300px; height: 300px;
+    background: rgba(249,115,22,0.15);
+    border-radius: 50%; filter: blur(60px);
+  }
+
+  .budget-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    position: relative; z-index: 1;
+    margin-top: 32px;
+  }
+
+  .budget-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .budget-item:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-4px);
+  }
+
+  .budget-item-value {
+    font-size: 24px; font-weight: 800;
+    color: var(--orange-light);
+    font-family: 'Cairo', sans-serif;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .budget-item-label {
+    font-size: 13px; opacity: 0.75;
+  }
+
+  /* ======= CONTACT PAGE ======= */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: start;
+  }
+
+  .contact-info-card {
+    background: linear-gradient(160deg, var(--blue-dark), var(--blue));
+    border-radius: 24px;
+    padding: 48px;
+    color: white;
+    position: sticky; top: 100px;
+    overflow: hidden;
+  }
+
+  .contact-info-card::before {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 200px; height: 200px;
+    background: rgba(249,115,22,0.3);
+    border-radius: 50%; filter: blur(40px);
+  }
+
+  .contact-info-card h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 28px; font-weight: 900;
+    margin-bottom: 16px;
+    position: relative; z-index: 1;
+  }
+
+  .contact-info-card > p {
+    font-size: 15px; opacity: 0.8; line-height: 1.8;
+    position: relative; z-index: 1;
+    margin-bottom: 36px;
+  }
+
+  .contact-methods { position: relative; z-index: 1; }
+
+  .contact-method {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-decoration: none;
+    color: white;
+    transition: all 0.25s;
+  }
+
+  .contact-method:last-child { border-bottom: none; }
+  .contact-method:hover { opacity: 0.8; transform: translateX(-6px); }
+
+  .contact-method-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+    transition: all 0.25s;
+  }
+
+  .contact-method:hover .contact-method-icon {
+    background: var(--orange);
+  }
+
+  .contact-method-info strong {
+    display: block; font-size: 14px; font-weight: 700; margin-bottom: 4px;
+  }
+
+  .contact-method-info span {
+    font-size: 13px; opacity: 0.7;
+  }
+
+  .contact-form-section { }
+
+  .contact-form-section h2 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 30px; font-weight: 900; color: var(--gray-900);
+    margin-bottom: 8px;
+  }
+
+  .contact-form-section > p {
+    font-size: 15px; color: var(--gray-600); margin-bottom: 36px; line-height: 1.8;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block; font-size: 14px; font-weight: 700; color: var(--gray-700);
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--gray-200);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: 'Tajawal', sans-serif;
+    color: var(--gray-900);
+    background: white;
+    transition: all 0.25s;
+    outline: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 4px rgba(249,115,22,0.1);
+  }
+
+  .form-textarea { resize: none; height: 130px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+    color: white;
+    border: none; border-radius: 12px;
+    font-size: 16px; font-weight: 700;
+    font-family: 'Tajawal', sans-serif;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(249,115,22,0.4);
+    transition: all 0.3s;
+  }
+
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(249,115,22,0.5);
+  }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 32px;
+    background: rgba(5,150,105,0.05);
+    border: 2px solid rgba(5,150,105,0.2);
+    border-radius: 16px;
+    color: #059669;
+  }
+
+  .form-success.show { display: block; animation: slideUp 0.4s ease; }
+  .form-success span { font-size: 48px; display: block; margin-bottom: 12px; }
+  .form-success p { font-size: 16px; font-weight: 600; }
+
+  /* ======= FOOTER ======= */
+  footer {
+    background: var(--gray-900);
+    color: white;
+    padding: 60px 5% 30px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-brand h3 {
+    font-family: 'Cairo', sans-serif;
+    font-size: 22px; font-weight: 900;
+    margin-bottom: 12px; color: white;
+  }
+
+  .footer-brand p {
+    font-size: 14px; opacity: 0.6; line-height: 1.8; margin-bottom: 24px;
+  }
+
+  .footer-social {
+    display: flex; gap: 12px;
+  }
+
+  .footer-social-btn {
+    width: 40px; height: 40px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.25s;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-social-btn:hover {
+    background: var(--orange);
+    transform: translateY(-3px);
+    border-color: var(--orange);
+  }
+
+  .footer-col h4 {
+    font-size: 14px; font-weight: 700; color: var(--orange-light);
+    margin-bottom: 20px; letter-spacing: 0.5px;
+  }
+
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a {
+    font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none;
+    transition: all 0.2s;
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  .footer-col ul li a:hover { color: white; padding-right: 6px; }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+    font-size: 13px; color: rgba(255,255,255,0.4);
+  }
+
+  .footer-bottom a { color: var(--orange-light); text-decoration: none; }
+
+  /* ======= MOBILE MENU ======= */
+  .mobile-menu-btn {
+    display: none;
+    background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px;
+    padding: 4px;
+  }
+
+  .mobile-menu-btn span {
+    width: 24px; height: 2px;
+    background: var(--gray-800);
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: block;
+  }
+
+  /* ======= SCROLL REVEAL ======= */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ======= COUNTER ANIMATION ======= */
+  @keyframes countUp {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* ======= RESPONSIVE ======= */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 16px; }
+    .nav-contact-btn { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; align-items: center; }
+    .section { padding: 60px 5%; }
+    .events-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Announcement Banner */
+  .announcement-bar {
+    background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+    color: white;
+    text-align: center;
+    padding: 10px 5%;
+    font-size: 13px; font-weight: 600;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    position: relative;
+  }
+
+  .announcement-bar-text {
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* Page indicator */
+  .page-indicator {
+    position: fixed;
+    left: 20px; top: 50%;
+    transform: translateY(-50%);
+    display: flex; flex-direction: column; gap: 8px;
+    z-index: 500;
+  }
+
+  .page-indicator-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gray-300);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+  }
+
+  .page-indicator-dot.active {
+    background: var(--orange);
+    transform: scale(1.5);
+  }
+
+  @media (max-width: 600px) {
+    .page-indicator { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Announcement Bar -->
+<div class="announcement-bar" id="announcementBar">
+  <div class="announcement-bar-text">
+    <span>📢</span>
+    <span>العام الدراسي 2025-2026 | اتحاد طلبة كلية الهندسة – جامعة بنغازي | انضم إلينا وكن جزءًا من التغيير</span>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a class="nav-logo" href="#" onclick="showPage('home')">
+    <div class="nav-logo-icon">🏛️</div>
+    <div class="nav-logo-text">
+      <span>اتحاد طلبة الهندسة</span>
+      <span>جامعة بنغازي</span>
+    </div>
+  </a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home')" class="active" id="nav-home">الرئيسية</a></li>
+    <li><a href="#" onclick="showPage('about')" id="nav-about">عن الاتحاد</a></li>
+    <li><a href="#" onclick="showPage('clubs')" id="nav-clubs">النوادي والفرق</a></li>
+    <li><a href="#" onclick="showPage('events')" id="nav-events">الأنشطة والفعاليات</a></li>
+    <li><a href="#" onclick="showPage('plan')" id="nav-plan">خطة التنفيذ</a></li>
+    <li><a href="#" onclick="showPage('contact')" id="nav-contact">تواصل معنا</a></li>
+  </ul>
+
+  <a href="https://t.me/sirajeldeen_cheme" target="_blank" class="nav-contact-btn nav-links" style="text-decoration:none; display:flex; align-items:center; gap:6px; list-style:none; padding:10px 20px; font-weight:700; font-size:14px;">
+    ✈️ ممثل الهندسة الكيميائية
+  </a>
+
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Page Indicator -->
+<div class="page-indicator" id="pageIndicator">
+  <button class="page-indicator-dot active" onclick="showPage('home')" title="الرئيسية"></button>
+  <button class="page-indicator-dot" onclick="showPage('about')" title="عن الاتحاد"></button>
+  <button class="page-indicator-dot" onclick="showPage('clubs')" title="النوادي"></button>
+  <button class="page-indicator-dot" onclick="showPage('events')" title="الفعاليات"></button>
+  <button class="page-indicator-dot" onclick="showPage('plan')" title="الخطة"></button>
+  <button class="page-indicator-dot" onclick="showPage('contact')" title="تواصل"></button>
+</div>
+
+<!-- ===================== PAGE: HOME ===================== -->
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape"></div>
+    <div class="hero-bg-shape"></div>
+    <div class="hero-grid"></div>
+    <div id="particles"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        العام الدراسي 2025 – 2026 | كلية الهندسة، جامعة بنغازي
+      </div>
+
+      <h1 class="hero-title">
+        اتحاد طلبة<br>
+        <span>كلية الهندسة</span>
+      </h1>
+
+      <p class="hero-subtitle">صوتك، مستقبلك، منصتك</p>
+
+      <p class="hero-desc">
+        نحن هنا لنمثّلك، ندعمك، ونبني معك منظومة طلابية تليق بطموحك. اتحاد طلبة كلية الهندسة في جامعة بنغازي – منصة واحدة لجميع تخصصات الهندسة.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-target="6">0</span>
+          <div class="hero-stat-label">نوادي ومبادرات</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-target="23">0</span>
+          <div class="hero-stat-label">فعالية مخططة</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-target="150">0</span>
+          <div class="hero-stat-label">طالب مستهدف</div>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number" data-target="4">0</span>
+          <div class="hero-stat-label">زيارات صناعية</div>
+        </div>
+      </div>
+
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="showPage('events')">
+          🔥 استعرض الفعاليات
+        </button>
+        <button class="btn-secondary" onclick="showPage('about')">
+          تعرف علينا ←
+        </button>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-indicator-line"></div>
+      <span>اسحب للأسفل</span>
+    </div>
+  </section>
+
+  <!-- Quick links -->
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">ما الذي يقدمه الاتحاد؟</span>
+      <h2 class="section-title">كل ما تحتاجه في <span>مكان واحد</span></h2>
+      <p class="section-desc">الاتحاد ليس مجرد هيئة إدارية – هو شريكك الأكاديمي والمهني طوال مسيرتك الجامعية</p>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-card reveal reveal-delay-1">
+        <span class="value-icon">🎯</span>
+        <h3 class="value-title">التمثيل الطلابي</h3>
+        <p class="value-text">نمثّل مطالبك أمام الإدارة والأكاديميين، ونعمل على حل القضايا التي تمسّك مباشرة.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <span class="value-icon">🔬</span>
+        <h3 class="value-title">الأنشطة التقنية</h3>
+        <p class="value-text">ورشات عمل تقنية، محاكاة صناعية، وأندية متخصصة تصنع الفرق بين المهندس النظري والتطبيقي.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-3">
+        <span class="value-icon">🏭</span>
+        <h3 class="value-title">الربط الصناعي</h3>
+        <p class="value-text">زيارات ميدانية لمصانع ومنشآت صناعية تقرّبك من الواقع العملي وتفتح أمامك أبواب التوظيف.</p>
+      </div>
+      <div class="value-card reveal">
+        <span class="value-icon">🏆</span>
+        <h3 class="value-title">المسابقات والتحدّيات</h3>
+        <p class="value-text">مسابقات هندسية تحدّيّة تُحفّز الإبداع وتُبرز المواهب على مستوى القسم والجامعة.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-1">
+        <span class="value-icon">📈</span>
+        <h3 class="value-title">التطوير المهني</h3>
+        <p class="value-text">من السيرة الذاتية وحتى مقابلة التوظيف – نوفّر لك الدعم الكامل لولوج سوق العمل بثقة.</p>
+      </div>
+      <div class="value-card reveal reveal-delay-2">
+        <span class="value-icon">🤝</span>
+        <h3 class="value-title">مجتمع الهندسة</h3>
+        <p class="value-text">بيئة داعمة تجمع طلاب جميع تخصصات الهندسة في شبكة واحدة من الزمالة والتعاون.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: ABOUT ===================== -->
+<div class="page" id="page-about">
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">من نحن</span>
+      <h2 class="section-title">اتحاد طلبة <span>كلية الهندسة</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-main-card">
+          <div class="about-card-icon">🏛️</div>
+          <h3 class="about-card-title">الاتحاد الطلابي</h3>
+          <p class="about-card-text">
+            منذ اليوم الأول، كان هدفنا واضحًا: أن نبني مجتمعًا هندسيًا حقيقيًا يفتخر بانتمائه ويسعى نحو الامتياز.
+          </p>
+        </div>
+        <div class="about-mini-cards">
+          <div class="about-mini-card">
+            <div class="about-mini-card-icon">⚙️</div>
+            <div class="about-mini-card-title">الهندسة الكيميائية</div>
+            <div class="about-mini-card-text">نادي متخصص نشط</div>
+          </div>
+          <div class="about-mini-card">
+            <div class="about-mini-card-icon">🌐</div>
+            <div class="about-mini-card-title">الهندسة المدنية</div>
+            <div class="about-mini-card-text">مبادرات بناء وتطوير</div>
+          </div>
+          <div class="about-mini-card">
+            <div class="about-mini-card-icon">💡</div>
+            <div class="about-mini-card-title">الهندسة الكهربائية</div>
+            <div class="about-mini-card-text">مشاريع ابتكارية</div>
+          </div>
+          <div class="about-mini-card">
+            <div class="about-mini-card-icon">🔩</div>
+            <div class="about-mini-card-title">الهندسة الميكانيكية</div>
+            <div class="about-mini-card-text">ورشات تطبيقية</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text reveal reveal-delay-1">
+        <h2>نبني المستقبل من <span>داخل القاعة</span></h2>
+        <p>
+          اتحاد طلبة كلية الهندسة في جامعة بنغازي ليس مجرد هيئة تنظيمية – إنه مساحة حرة للطموح الحقيقي. نؤمن أن الطالب المهندس يستحق أكثر من محاضرة في قاعة وامتحان في نهاية الفصل.
+        </p>
+        <div class="about-highlight">
+          <p>"نحن لا ننتظر أن تُصنع الفرص – نحن نصنعها."</p>
+        </div>
+        <p>
+          انطلقنا بخطة واضحة، ورؤية طموحة، وفريق من الطلاب الذين يؤمنون أن العمل الجماعي الحقيقي يغيّر الواقع. من اليوم الأول لأنشطتنا، إلى قمم الحياة المهنية – نرافقك في كل خطوة.
+        </p>
+        <button class="btn-primary" onclick="showPage('clubs')" style="display:inline-flex;">
+          تعرف على نوادينا ←
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section class="section section-alt">
+    <div class="section-header reveal">
+      <span class="section-tag">الرؤية والرسالة</span>
+      <h2 class="section-title">ما الذي <span>نسعى إليه؟</span></h2>
+    </div>
+
+    <div class="clubs-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+      <div class="club-card reveal">
+        <div class="club-card-header" style="background: linear-gradient(135deg, var(--orange-dark), var(--orange));">
+          <div class="club-card-icon">🎯</div>
+          <div class="club-card-name">الرؤية</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">أن نكون منصة احترافية رائدة تُمكّن طلاب الهندسة من التميّز الأكاديمي، وبناء علاقات صناعية حقيقية، وتطوير مهارات قيادية تؤهلهم للعمل في بيئات العمل العالمية والمحلية.</p>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-1">
+        <div class="club-card-header" style="background: linear-gradient(135deg, var(--blue-dark), var(--blue));">
+          <div class="club-card-icon">🚀</div>
+          <div class="club-card-name">الرسالة</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">سدّ الفجوة بين التعليم الأكاديمي والواقع الصناعي عبر فعاليات هادفة، وزيارات ميدانية، وبرامج تطويرية تُخرج مهندسًا جاهزًا للعطاء من اليوم الأول في سوق العمل.</p>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-2">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #059669, #10B981);">
+          <div class="club-card-icon">⭐</div>
+          <div class="club-card-name">القيم الجوهرية</div>
+        </div>
+        <div class="club-card-body">
+          <div class="club-card-tags">
+            <span class="club-tag">🔍 التميّز</span>
+            <span class="club-tag">🤝 التعاون</span>
+            <span class="club-tag">💡 الابتكار</span>
+            <span class="club-tag">🏆 المسؤولية</span>
+            <span class="club-tag">📚 التعلّم المستمر</span>
+            <span class="club-tag">🌟 الشفافية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: CLUBS ===================== -->
+<div class="page" id="page-clubs">
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">النوادي والفرق الطلابية</span>
+      <h2 class="section-title">مساحتك <span>المتخصصة</span></h2>
+    </div>
+
+    <div class="clubs-intro reveal">
+      <h2>كل تخصص له صوت – كل طالب له مكان</h2>
+      <p>تحت مظلة اتحاد طلبة كلية الهندسة، يعمل نادي الهندسة الكيميائية (ChemE Club) إلى جانب فرق وتخصصات أخرى. نوادينا ليست مجرد اسم – هي مجتمعات فاعلة تبني وتُنتج وتُؤثّر.</p>
+    </div>
+
+    <div class="clubs-grid">
+      <div class="club-card reveal">
+        <div class="club-card-header">
+          <div class="club-card-icon">⚗️</div>
+          <div class="club-card-name">نادي الهندسة الكيميائية – ChemE Club</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">النادي الأكثر نشاطًا في الكلية للعام 2025-2026. يعمل على تقديم ورشات تقنية، زيارات صناعية، ومسابقات تصميمية تربط الطالب بالصناعة المحلية والعالمية.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">HYSYS & Aspen</span>
+            <span class="club-tag">سلامة صناعية</span>
+            <span class="club-tag">محطات تحلية</span>
+            <span class="club-tag">بتروكيماويات</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-1">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #1a5c3e, #2d9e6b);">
+          <div class="club-card-icon">🏗️</div>
+          <div class="club-card-name">نادي الهندسة المدنية</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">يُركّز على مشاريع البنية التحتية، ورشات التصميم الإنشائي، والزيارات الميدانية لمواقع البناء والتطوير العمراني.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">تصميم إنشائي</span>
+            <span class="club-tag">BIM</span>
+            <span class="club-tag">خرسانة متقدمة</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-2">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #7c2d12, #c2410c);">
+          <div class="club-card-icon">⚡</div>
+          <div class="club-card-name">نادي الهندسة الكهربائية</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">يجمع بين الإلكترونيات والأنظمة الكهربائية وتقنيات الطاقة المتجددة في بيئة تعليمية تجريبية مثيرة.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">أنظمة قدرة</span>
+            <span class="club-tag">PLC</span>
+            <span class="club-tag">طاقة شمسية</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="club-card reveal">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #4c1d95, #7c3aed);">
+          <div class="club-card-icon">🔩</div>
+          <div class="club-card-name">نادي الهندسة الميكانيكية</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">يختص بتقنيات التصنيع، ديناميكيات الموائع، التصميم الميكانيكي، وتطبيقات الطباعة ثلاثية الأبعاد في المشاريع الطلابية.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">CAD/CAM</span>
+            <span class="club-tag">طباعة 3D</span>
+            <span class="club-tag">تصميم آلات</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-1">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #0f4c75, #1b98e0);">
+          <div class="club-card-icon">💻</div>
+          <div class="club-card-name">فريق التقنية والابتكار</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">يقود التحول الرقمي داخل الاتحاد، ويطوّر الحلول التقنية ويُنظّم هاكاثونات ومسابقات ذكاء اصطناعي على مستوى الكلية.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">هاكاثون</span>
+            <span class="club-tag">ذكاء اصطناعي</span>
+            <span class="club-tag">تطوير ويب</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="club-card reveal reveal-delay-2">
+        <div class="club-card-header" style="background: linear-gradient(135deg, #065f46, #059669);">
+          <div class="club-card-icon">📣</div>
+          <div class="club-card-name">فريق الإعلام والتوثيق</div>
+        </div>
+        <div class="club-card-body">
+          <p class="club-card-desc">يتولى التوثيق الإعلامي لجميع فعاليات الاتحاد والنوادي، وإدارة الهوية البصرية، ومحتوى منصات التواصل الاجتماعي.</p>
+          <div class="club-card-tags">
+            <span class="club-tag">فيديو وتصوير</span>
+            <span class="club-tag">تصميم جرافيك</span>
+            <span class="club-tag">سوشال ميديا</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: EVENTS ===================== -->
+<div class="page" id="page-events">
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">الأنشطة والفعاليات</span>
+      <h2 class="section-title">برنامج متكامل <span>على مدار العام</span></h2>
+      <p class="section-desc">23 فعالية وورشة وزيارة ميدانية مصممة لتطوير المهارات التقنية، القيادية، والمهنية لطلاب كلية الهندسة</p>
+    </div>
+
+    <div class="events-filter reveal">
+      <button class="filter-btn active" onclick="filterEvents('all', this)">الكل</button>
+      <button class="filter-btn" onclick="filterEvents('union', this)">فعاليات الاتحاد</button>
+      <button class="filter-btn" onclick="filterEvents('cheme', this)">نادي الهندسة الكيميائية</button>
+      <button class="filter-btn" onclick="filterEvents('internal', this)">تطوير داخلي</button>
+      <button class="filter-btn" onclick="filterEvents('trip', this)">زيارات ميدانية</button>
+      <button class="filter-btn" onclick="filterEvents('flagship', this)">فعاليات مميزة</button>
+    </div>
+
+    <div class="events-grid" id="eventsGrid">
+
+      <!-- Union Events -->
+      <div class="event-card" data-category="union">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type blue">فعالية الاتحاد</span>
+            <span class="event-card-phase">المرحلة الأولى</span>
+          </div>
+          <h3 class="event-card-title">منتدى الانطلاق الطلابي</h3>
+          <p class="event-card-desc">فعالية استهلالية لاستقبال جميع طلاب الكلية، التعريف بخدمات الاتحاد، وفتح حوار مباشر مع أعضاء هيئة التدريس.</p>
+          <ul class="event-card-features">
+            <li>التعريف بخدمات وفرق الاتحاد</li>
+            <li>برنامج ترحيبي للطلاب الجدد</li>
+            <li>جلسة أسئلة مفتوحة مع الأساتذة</li>
+            <li>مسابقات خفيفة بجوائز</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>👥 150-200 طالب</span>
+          <span>🏛️ قاعة كبرى</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="union">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type blue">فعالية الاتحاد</span>
+            <span class="event-card-phase">سنوية</span>
+          </div>
+          <h3 class="event-card-title">يوم الهندسة</h3>
+          <p class="event-card-desc">احتفالية شاملة تضم عروض تقنية، مسابقات هندسية، ومعرضًا للمشاريع الطلابية على مستوى كلية الهندسة.</p>
+          <ul class="event-card-features">
+            <li>أجنحة معلوماتية لكل تخصص</li>
+            <li>مسابقات ومباريات تقنية</li>
+            <li>معرض مشاريع الطلاب</li>
+            <li>جلسة تصوير احترافية</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🎯 يوم كامل</span>
+          <span>🏆 تخصصات متعددة</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="union">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type blue">فعالية الاتحاد</span>
+            <span class="event-card-phase">شهري</span>
+          </div>
+          <h3 class="event-card-title">برنامج صوت الطالب</h3>
+          <p class="event-card-desc">حوار شهري مفتوح بين الطلاب وإدارة القسم لمناقشة القضايا الأكاديمية والإدارية وإيجاد حلول مشتركة.</p>
+          <ul class="event-card-features">
+            <li>منصة لتقديم مقترحات الطلاب</li>
+            <li>نقاش قضايا أكاديمية وإدارية</li>
+            <li>جلسات حل مشترك للمشكلات</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>📅 مرة/شهر</span>
+          <span>🗣️ حوار مفتوح</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="union">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type blue">فعالية الاتحاد</span>
+            <span class="event-card-phase">ترفيهي</span>
+          </div>
+          <h3 class="event-card-title">بطولة ألعاب الهندسة</h3>
+          <p class="event-card-desc">بطولة ترفيهية تنافسية تجمع طلاب الكلية في فضاء غير رسمي لبناء الروابط وكسر الحواجز.</p>
+          <ul class="event-card-features">
+            <li>بطولة شطرنج</li>
+            <li>مسابقة FIFA</li>
+            <li>بطولة PUBG Mobile</li>
+            <li>تحديات ذكاء سريعة</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🎮 تنافسي – ترفيهي</span>
+          <span>🏅 جوائز</span>
+        </div>
+      </div>
+
+      <!-- ChemE Events -->
+      <div class="event-card" data-category="cheme">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">نادي الكيمياء الهندسية</span>
+            <span class="event-card-phase">الإطلاق</span>
+          </div>
+          <h3 class="event-card-title">حفل إطلاق ChemE Club</h3>
+          <p class="event-card-desc">الحفل الرسمي لإطلاق النادي، الكشف عن الهوية البصرية، وتقديم الرؤية والخطة السنوية لطلاب الكلية.</p>
+          <ul class="event-card-features">
+            <li>تدشين الشعار والهوية البصرية</li>
+            <li>عرض الرؤية والأهداف</li>
+            <li>تعريف بالفرق والهيكل التنظيمي</li>
+            <li>فيديو ترويجي</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>⚗️ ChemE Club</span>
+          <span>🎬 2-3 ساعات</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="cheme">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">نادي الكيمياء الهندسية</span>
+            <span class="event-card-phase">دوري</span>
+          </div>
+          <h3 class="event-card-title">ChemE Talks</h3>
+          <p class="event-card-desc">سلسلة لقاءات دورية مع مهندسين من المصانع، شركات البتروكيماويات، ومحطات التحلية لمشاركة تجاربهم المهنية.</p>
+          <ul class="event-card-features">
+            <li>مهندسون من مصانع محلية</li>
+            <li>خريجون ناجحون يشاركون تجاربهم</li>
+            <li>توجهات سوق العمل</li>
+            <li>جلسة أسئلة مفتوحة</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>📅 شهري</span>
+          <span>🎙️ ضيوف متخصصون</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="cheme">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">نادي الكيمياء الهندسية</span>
+            <span class="event-card-phase">تقني</span>
+          </div>
+          <h3 class="event-card-title">ورشة عمليات الفصل</h3>
+          <p class="event-card-desc">ورشة تطبيقية تغطي أساسيات التقطير، الامتصاص، والاستخلاص مع تجارب عملية وحسابات تصميمية.</p>
+          <ul class="event-card-features">
+            <li>مبادئ وتصميمات التقطير</li>
+            <li>عمليات الامتصاص والتجريد</li>
+            <li>الاستخلاص السائل-سائل</li>
+            <li>تجارب عملية ونمذجة</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🔬 ورشة تطبيقية</span>
+          <span>⏱️ يوم كامل</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="cheme">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">نادي الكيمياء الهندسية</span>
+            <span class="event-card-phase">تقني</span>
+          </div>
+          <h3 class="event-card-title">Simulation Bootcamp – HYSYS & Aspen</h3>
+          <p class="event-card-desc">تدريب مكثّف على برامج المحاكاة الصناعية الأكثر استخدامًا في الشركات الهندسية عالميًا.</p>
+          <ul class="event-card-features">
+            <li>أسس Aspen HYSYS</li>
+            <li>نمذجة العمليات في Aspen Plus</li>
+            <li>دراسات حالة حقيقية</li>
+            <li>شهادة إتمام</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>💻 برمجيات صناعية</span>
+          <span>🏆 شهادة</span>
+        </div>
+      </div>
+
+      <!-- Internal -->
+      <div class="event-card" data-category="internal">
+        <div class="event-card-top green"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type green">تطوير داخلي</span>
+            <span class="event-card-phase">المرحلة الثانية</span>
+          </div>
+          <h3 class="event-card-title">قيادة الفرق وإدارة الأحداث</h3>
+          <p class="event-card-desc">تدريب شامل لأعضاء الاتحاد والنوادي على إدارة الفعاليات من أ إلى ي، من التخطيط وحتى التقييم.</p>
+          <ul class="event-card-features">
+            <li>دورة تخطيط الفعاليات</li>
+            <li>إدارة الميزانيات والموارد</li>
+            <li>تفويض المهام والمتابعة</li>
+            <li>إدارة المخاطر</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🎓 للأعضاء فقط</span>
+          <span>⏱️ 3 ساعات</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="internal">
+        <div class="event-card-top green"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type green">تطوير داخلي</span>
+            <span class="event-card-phase">المرحلة الثانية</span>
+          </div>
+          <h3 class="event-card-title">التصميم والهوية البصرية</h3>
+          <p class="event-card-desc">ورشة في أسس التصميم الجرافيكي وبناء الهوية البصرية باستخدام Canva والأدوات الحديثة.</p>
+          <ul class="event-card-features">
+            <li>أسس الهوية البصرية</li>
+            <li>إنتاج محتوى سوشال ميديا</li>
+            <li>تصميم البوسترات والمطبوعات</li>
+            <li>الاتساق في الصورة البصرية</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🎓 للأعضاء فقط</span>
+          <span>⏱️ 4 ساعات</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="internal">
+        <div class="event-card-top green"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type green">تطوير داخلي</span>
+            <span class="event-card-phase">المرحلة الثانية</span>
+          </div>
+          <h3 class="event-card-title">مهارات القيادة الفعّالة</h3>
+          <p class="event-card-desc">تدريب على أساليب القيادة الموقفية، إدارة النزاعات، واتخاذ القرار تحت الضغط.</p>
+          <ul class="event-card-features">
+            <li>أنماط القيادة وتطبيقاتها</li>
+            <li>بناء الفريق والتحفيز</li>
+            <li>حل النزاعات والوساطة</li>
+            <li>الذكاء العاطفي في القيادة</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🎓 للأعضاء فقط</span>
+          <span>⏱️ جلستان × 2 ساعة</span>
+        </div>
+      </div>
+
+      <!-- Trips -->
+      <div class="event-card" data-category="trip">
+        <div class="event-card-top purple"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type purple">زيارة ميدانية</span>
+            <span class="event-card-phase">المرحلة الرابعة</span>
+          </div>
+          <h3 class="event-card-title">زيارة مصنع الإسفلت</h3>
+          <p class="event-card-desc">جولة في منشأة إنتاج الإسفلت لمشاهدة عمليات الخلط والمزج، ضبط الجودة، وأنظمة السلامة الصناعية.</p>
+          <ul class="event-card-features">
+            <li>عمليات الخلط والمزج الساخن</li>
+            <li>اختبارات ضبط الجودة</li>
+            <li>بروتوكولات السلامة الصناعية</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🏭 زيارة ميدانية</span>
+          <span>🚌 يوم كامل</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="trip">
+        <div class="event-card-top purple"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type purple">زيارة ميدانية</span>
+            <span class="event-card-phase">المرحلة الرابعة</span>
+          </div>
+          <h3 class="event-card-title">زيارة شركة الجوف لتقنية النفط</h3>
+          <p class="event-card-desc">جولة في عمليات النفط والغاز الأولية، تقنيات الحفر، معالجة النفط، وأنظمة الإدارة البيئية.</p>
+          <ul class="event-card-features">
+            <li>عمليات النفط والغاز الأولية</li>
+            <li>تقنيات الحفر وإتمام الآبار</li>
+            <li>فرص التوظيف في القطاع النفطي</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🛢️ صناعة نفطية</span>
+          <span>🚌 يوم كامل</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="trip">
+        <div class="event-card-top purple"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type purple">زيارة ميدانية</span>
+            <span class="event-card-phase">المرحلة الرابعة</span>
+          </div>
+          <h3 class="event-card-title">جولة محطة تحلية المياه</h3>
+          <p class="event-card-desc">استعراض لتقنيات التحلية بالتناضح العكسي والتبخر متعدد المراحل وأنظمة استرداد الطاقة.</p>
+          <ul class="event-card-features">
+            <li>تقنيات RO و MSF</li>
+            <li>أنظمة المعالجة المسبقة</li>
+            <li>تحسين الطاقة في التحلية</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>💧 محطة تحلية</span>
+          <span>🚌 يوم كامل</span>
+        </div>
+      </div>
+
+      <!-- Flagship -->
+      <div class="event-card" data-category="flagship">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">فعالية مميزة</span>
+            <span class="event-card-phase">المرحلة الخامسة</span>
+          </div>
+          <h3 class="event-card-title">🏆 ChemE Innovation Challenge</h3>
+          <p class="event-card-desc">تحدي تصميم هندسي سنوي تتنافس فيه الفرق لحل مشكلات صناعية حقيقية بالتعاون مع شركات محلية.</p>
+          <ul class="event-card-features">
+            <li>فرق 3-5 طلاب</li>
+            <li>تحديات مستوحاة من الصناعة</li>
+            <li>تقرير فني + عرض أمام لجنة تحكيم</li>
+            <li>جوائز نقدية وشهادات</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>🏆 جوائز ومكافآت</span>
+          <span>🏭 شركاء صناعيون</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="flagship">
+        <div class="event-card-top orange"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type orange">فعالية مميزة</span>
+            <span class="event-card-phase">المرحلة الخامسة</span>
+          </div>
+          <h3 class="event-card-title">🎓 قمة المسار المهني</h3>
+          <p class="event-card-desc">مؤتمر تطوير مهني شامل: كتابة السيرة الذاتية، بناء LinkedIn، مقابلات التوظيف، وفرص التواصل مع الشركات.</p>
+          <ul class="event-card-features">
+            <li>ورشة CV وسيرة ذاتية</li>
+            <li>تحضير للمقابلات الفنية والسلوكية</li>
+            <li>مقابلات وهمية مع مسؤولي توظيف</li>
+            <li>جلسة تواصل مع شركات</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>💼 مهني</span>
+          <span>🌐 فرص التوظيف</span>
+        </div>
+      </div>
+
+      <div class="event-card" data-category="flagship">
+        <div class="event-card-top blue"></div>
+        <div class="event-card-body">
+          <div class="event-card-meta">
+            <span class="event-card-type blue">فعالية مميزة</span>
+            <span class="event-card-phase">المرحلة الخامسة</span>
+          </div>
+          <h3 class="event-card-title">🔬 يوم البحث العلمي – ChemE Research Day</h3>
+          <p class="event-card-desc">ملتقى سنوي لعرض مشاريع التخرج والبحوث الطلابية أمام لجنة من الأساتذة والمهندسين الصناعيين.</p>
+          <ul class="event-card-features">
+            <li>عروض ملصقات بحثية احترافية</li>
+            <li>عروض شفهية لمشاريع مختارة</li>
+            <li>جوائز أفضل بحث وأفضل عرض</li>
+            <li>تعزيز ثقافة البحث العلمي</li>
+          </ul>
+        </div>
+        <div class="event-card-footer">
+          <span>📚 بحث علمي</span>
+          <span>🏅 جوائز تميّز</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: PLAN ===================== -->
+<div class="page" id="page-plan">
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">خطة التنفيذ</span>
+      <h2 class="section-title">خارطة طريق <span>متكاملة</span></h2>
+      <p class="section-desc">18 نشاطًا موزعة على 6 مراحل متسلسلة خلال العام الدراسي 2025-2026</p>
+    </div>
+
+    <div class="phases-timeline">
+
+      <div class="phase-item reveal">
+        <div class="phase-dot"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 0</span>
+            <span class="phase-timeline-badge">الأيام 1-30</span>
+          </div>
+          <h3 class="phase-title">التأسيس والبنية التحتية</h3>
+          <p class="phase-desc">إرساء الأساس التنظيمي: تشكيل الفرق، بناء الهوية البصرية، وإطلاق الحضور الرقمي قبل بدء الأنشطة العلنية.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">5 لجان رئيسية</span>
+            <span class="phase-item-tag">شعار وهوية بصرية</span>
+            <span class="phase-item-tag">قوالب تصميمية</span>
+            <span class="phase-item-tag">حسابات سوشال ميديا</span>
+            <span class="phase-item-tag">200+ متابع في 30 يومًا</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot" style="border-color: var(--orange);"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 1</span>
+            <span class="phase-timeline-badge">الأيام 31-60</span>
+          </div>
+          <h3 class="phase-title">الإطلاق والاستقطاب</h3>
+          <p class="phase-desc">فعالية الإطلاق الرسمية لاستقطاب الأعضاء وبناء الزخم الأولي داخل الكلية.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">حفل الإطلاق الرسمي</span>
+            <span class="phase-item-tag">150-200 طالب</span>
+            <span class="phase-item-tag">حملة تسجيل الأعضاء</span>
+            <span class="phase-item-tag">ميزانية: 750-900 د.ل.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot" style="border-color: var(--blue);"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 2</span>
+            <span class="phase-timeline-badge">الأيام 61-120</span>
+          </div>
+          <h3 class="phase-title">بناء الكفاءات الداخلية</h3>
+          <p class="phase-desc">5 ورشات تدريبية حصرية لأعضاء الاتحاد والنوادي لرفع مستوى الأداء التنظيمي والمهني.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">إدارة الفعاليات</span>
+            <span class="phase-item-tag">التصميم والعلامة التجارية</span>
+            <span class="phase-item-tag">مهارات القيادة</span>
+            <span class="phase-item-tag">التواصل الاحترافي</span>
+            <span class="phase-item-tag">الكتابة التقنية</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot" style="border-color: var(--orange);"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 3</span>
+            <span class="phase-timeline-badge">الأيام 121-210</span>
+          </div>
+          <h3 class="phase-title">الفعاليات العلنية</h3>
+          <p class="phase-desc">فعاليات موجهة لجميع طلاب الكلية: ورشات تقنية، محاضرات متخصصة، وعروض تفاعلية.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">ورشة السلامة الصناعية</span>
+            <span class="phase-item-tag">ChemE Talks</span>
+            <span class="phase-item-tag">ChemE in Real Life</span>
+            <span class="phase-item-tag">ميزانية: 1,980-2,180 د.ل.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot" style="border-color: #7C3AED;"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 4</span>
+            <span class="phase-timeline-badge">الأيام 151-240</span>
+          </div>
+          <h3 class="phase-title">الزيارات الصناعية الميدانية</h3>
+          <p class="phase-desc">4 زيارات مدروسة لمنشآت صناعية فعلية، تمنح الطالب تجربة الواقع الصناعي عن قرب.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">مصنع إسفلت</span>
+            <span class="phase-item-tag">شركة الجوف للنفط</span>
+            <span class="phase-item-tag">محطة تحلية مياه</span>
+            <span class="phase-item-tag">مصنع بوليمرات</span>
+            <span class="phase-item-tag">ميزانية: 2,800 د.ل.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="phase-item reveal">
+        <div class="phase-dot" style="border-color: #059669;"></div>
+        <div class="phase-card">
+          <div class="phase-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+            <span class="phase-number">المرحلة 5</span>
+            <span class="phase-timeline-badge">الأيام 241-330</span>
+          </div>
+          <h3 class="phase-title">الفعاليات الكبرى</h3>
+          <p class="phase-desc">ثلاثة ملتقيات مرموقة تُرسّخ حضور الاتحاد وتُقدّم قيمة استثنائية لجميع طلاب الكلية.</p>
+          <div class="phase-items">
+            <span class="phase-item-tag">ChemE Innovation Challenge</span>
+            <span class="phase-item-tag">يوم البحث العلمي</span>
+            <span class="phase-item-tag">قمة المسار المهني</span>
+            <span class="phase-item-tag">ميزانية: 7,300 د.ل.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="budget-card reveal">
+      <div style="position:relative; z-index:1;">
+        <span class="section-tag" style="background:rgba(249,115,22,0.2); color:var(--orange-light);">الملخص المالي</span>
+        <h2 style="font-family:'Cairo',sans-serif; font-size:28px; font-weight:900; margin-top:12px;">الميزانية التقديرية السنوية</h2>
+        <p style="opacity:0.7; font-size:14px; margin-top:8px;">جميع الأرقام بالدينار الليبي (د.ل.)</p>
+      </div>
+      <div class="budget-grid">
+        <div class="budget-item">
+          <span class="budget-item-value">16,610 – 19,310</span>
+          <span class="budget-item-label">إجمالي التكاليف</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-item-value">4,800 – 5,300</span>
+          <span class="budget-item-label">الإيرادات المتوقعة</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-item-value">11,310 – 14,010</span>
+          <span class="budget-item-label">صافي التكلفة</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-item-value">100 – 150</span>
+          <span class="budget-item-label">عضو مستهدف</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-item-value">30 – 40%</span>
+          <span class="budget-item-label">نسبة الاكتفاء الذاتي</span>
+        </div>
+        <div class="budget-item">
+          <span class="budget-item-value">500+</span>
+          <span class="budget-item-label">متابع سوشال ميديا</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===================== PAGE: CONTACT ===================== -->
+<div class="page" id="page-contact">
+  <section class="section">
+    <div class="section-header reveal">
+      <span class="section-tag">تواصل معنا</span>
+      <h2 class="section-title">نحن <span>هنا لنسمعك</span></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info-card reveal">
+        <h2>تواصل مع الاتحاد</h2>
+        <p>سواء كان لديك اقتراح، استفسار، أو رغبة في الانضمام – ستجد دائمًا من يستمع إليك في اتحاد طلبة كلية الهندسة.</p>
+
+        <div class="contact-methods">
+          <a href="https://t.me/sirajeldeen_cheme" target="_blank" class="contact-method">
+            <div class="contact-method-icon">✈️</div>
+            <div class="contact-method-info">
+              <strong>ممثل الهندسة الكيميائية – سراج الدين</strong>
+              <span>@sirajeldeen_cheme على تيليجرام</span>
+            </div>
+          </a>
+
+          <a href="https://t.me/chemclub_uob" target="_blank" class="contact-method">
+            <div class="contact-method-icon">⚗️</div>
+            <div class="contact-method-info">
+              <strong>قناة نادي الكيمياء الهندسية</strong>
+              <span>@chemclub_uob على تيليجرام</span>
+            </div>
+          </a>
+
+          <div class="contact-method" style="cursor:default;">
+            <div class="contact-method-icon">🏛️</div>
+            <div class="contact-method-info">
+              <strong>كلية الهندسة – جامعة بنغازي</strong>
+              <span>قسم الهندسة الكيميائية</span>
+            </div>
+          </div>
+
+          <div class="contact-method" style="cursor:default;">
+            <div class="contact-method-icon">📅</div>
+            <div class="contact-method-info">
+              <strong>العام الدراسي 2025-2026</strong>
+              <span>نشط طوال الفصل الدراسي</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-section reveal reveal-delay-1">
+        <h2>راسلنا مباشرة</h2>
+        <p>أرسل اقتراحك أو استفسارك وسيتواصل معك أحد أعضاء الاتحاد في أقرب وقت ممكن.</p>
+
+        <div id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">الاسم الكامل *</label>
+              <input type="text" class="form-input" placeholder="اكتب اسمك هنا">
+            </div>
+            <div class="form-group">
+              <label class="form-label">التخصص</label>
+              <select class="form-select">
+                <option value="">اختر تخصصك</option>
+                <option>هندسة كيميائية</option>
+                <option>هندسة مدنية</option>
+                <option>هندسة كهربائية</option>
+                <option>هندسة ميكانيكية</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">موضوع الرسالة *</label>
+            <select class="form-select">
+              <option value="">اختر الموضوع</option>
+              <option>الانضمام للاتحاد أو نادٍ</option>
+              <option>اقتراح فعالية أو نشاط</option>
+              <option>شكوى أو مقترح أكاديمي</option>
+              <option>الشراكة والرعاية</option>
+              <option>استفسار عام</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">رسالتك *</label>
+            <textarea class="form-textarea" placeholder="اكتب رسالتك هنا... نحن نقرأ كل الرسائل ونرد عليها"></textarea>
+          </div>
+
+          <button class="form-submit" onclick="submitForm()">
+            إرسال الرسالة →
+          </button>
+        </div>
+
+        <div class="form-success" id="formSuccess">
+          <span>✅</span>
+          <p>تم استلام رسالتك! سيتواصل معك أحد أعضاء الاتحاد قريبًا.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>اتحاد طلبة كلية الهندسة</h3>
+      <p>منصة الطالب المهندس في جامعة بنغازي. نعمل لأجل مستقبلك الأكاديمي والمهني.</p>
+      <div class="footer-social">
+        <a href="https://t.me/chemclub_uob" target="_blank" class="footer-social-btn">✈️</a>
+        <a href="https://t.me/sirajeldeen_cheme" target="_blank" class="footer-social-btn">👤</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li><a href="#" onclick="showPage('home')">↳ الرئيسية</a></li>
+        <li><a href="#" onclick="showPage('about')">↳ عن الاتحاد</a></li>
+        <li><a href="#" onclick="showPage('clubs')">↳ النوادي</a></li>
+        <li><a href="#" onclick="showPage('events')">↳ الفعاليات</a></li>
+        <li><a href="#" onclick="showPage('plan')">↳ خطة التنفيذ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>تواصل معنا</h4>
+      <ul>
+        <li><a href="https://t.me/sirajeldeen_cheme" target="_blank">↳ ممثل الهندسة الكيميائية</a></li>
+        <li><a href="https://t.me/chemclub_uob" target="_blank">↳ قناة ChemE Club</a></li>
+        <li><a href="#" onclick="showPage('contact')">↳ نموذج التواصل</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025-2026 اتحاد طلبة كلية الهندسة – جامعة بنغازي. جميع الحقوق محفوظة.</span>
+    <span>
+      <a href="https://t.me/sirajeldeen_cheme" target="_blank">ممثل الهندسة الكيميائية: سراج الدين</a>
+    </span>
+  </div>
+</footer>
+
+<script>
+// ======= PAGE NAVIGATION =======
+const pages = ['home', 'about', 'clubs', 'events', 'plan', 'contact'];
+let currentPage = 'home';
+
+function showPage(pageName) {
+  // Hide all pages
+  pages.forEach(p => {
+    const el = document.getElementById('page-' + p);
+    if (el) el.classList.remove('active');
+    const nav = document.getElementById('nav-' + p);
+    if (nav) nav.classList.remove('active');
+  });
+
+  // Show selected page
+  const target = document.getElementById('page-' + pageName);
+  if (target) target.classList.add('active');
+  const navLink = document.getElementById('nav-' + pageName);
+  if (navLink) navLink.classList.add('active');
+
+  // Update page indicators
+  const dots = document.querySelectorAll('.page-indicator-dot');
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('active', pages[i] === pageName);
+  });
+
+  currentPage = pageName;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Trigger reveal animations
+  setTimeout(triggerReveal, 100);
+}
+
+// ======= SCROLL ANIMATIONS =======
+function triggerReveal() {
+  const reveals = document.querySelectorAll('.reveal:not(.revealed)');
+  reveals.forEach((el, i) => {
+    setTimeout(() => {
+      el.classList.add('revealed');
+    }, i * 80);
+  });
+}
+
+// Scroll-based reveals
+window.addEventListener('scroll', () => {
+  const reveals = document.querySelectorAll('.reveal:not(.revealed)');
+  reveals.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('revealed');
+    }
+  });
+
+  // Navbar scroll effect
+  const nav = document.getElementById('navbar');
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Initial reveal
+setTimeout(triggerReveal, 300);
+
+// ======= PARTICLE SYSTEM =======
+function createParticles() {
+  const container = document.getElementById('particles');
+  if (!container) return;
+
+  for (let i = 0; i < 20; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      animation-duration: ${6 + Math.random() * 8}s;
+      animation-delay: ${Math.random() * 8}s;
+      width: ${3 + Math.random() * 5}px;
+      height: ${3 + Math.random() * 5}px;
+      opacity: ${0.3 + Math.random() * 0.4};
+    `;
+    container.appendChild(p);
+  }
+}
+
+createParticles();
+
+// ======= COUNTER ANIMATION =======
+function animateCounters() {
+  const counters = document.querySelectorAll('[data-target]');
+  counters.forEach(counter => {
+    const target = parseInt(counter.getAttribute('data-target'));
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        counter.textContent = target + (target >= 100 ? '+' : '');
+        clearInterval(timer);
+      } else {
+        counter.textContent = Math.floor(current);
+      }
+    }, 40);
+  });
+}
+
+setTimeout(animateCounters, 800);
+
+// ======= EVENTS FILTER =======
+function filterEvents(category, btn) {
+  // Update button states
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Filter cards
+  const cards = document.querySelectorAll('.event-card');
+  cards.forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = 'block';
+      card.style.animation = 'fadeInPage 0.3s ease';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// ======= FORM SUBMISSION =======
+function submitForm() {
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.style.opacity = '0';
+  form.style.transition = 'opacity 0.3s';
+  setTimeout(() => {
+    form.style.display = 'none';
+    success.classList.add('show');
+  }, 300);
+}
+
+// ======= MOBILE MENU =======
+function toggleMobileMenu() {
+  const navLinks = document.getElementById('navLinks');
+  navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+  navLinks.style.flexDirection = 'column';
+  navLinks.style.position = 'absolute';
+  navLinks.style.top = '72px';
+  navLinks.style.right = '0';
+  navLinks.style.left = '0';
+  navLinks.style.background = 'white';
+  navLinks.style.padding = '20px';
+  navLinks.style.boxShadow = '0 8px 24px rgba(0,0,0,0.1)';
+  navLinks.style.zIndex = '999';
+}
+
+// Close mobile menu when clicking outside
+document.addEventListener('click', (e) => {
+  const nav = document.getElementById('navLinks');
+  const btn = document.querySelector('.mobile-menu-btn');
+  if (!nav.contains(e.target) && !btn.contains(e.target) && window.innerWidth <= 900) {
+    nav.style.display = 'none';
+  }
+});
+
+// ======= FLOATING SHAPES MOUSE INTERACTION =======
+document.addEventListener('mousemove', (e) => {
+  const shapes = document.querySelectorAll('.hero-bg-shape');
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  shapes.forEach((shape, i) => {
+    const factor = (i + 1) * 0.3;
+    shape.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+  });
+});
+</script>
+</body>
+</html>
